@@ -98,5 +98,14 @@ display: flex;
     border-color: transparent;
     margin: 0 0 150px;
     padding-bottom: 18%;
-    background-color: #666;
+    padding-right: 5%;
+}
+
+.list-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 100px;
+    height: 100px;
 }
