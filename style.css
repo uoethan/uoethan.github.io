@@ -61,3 +61,42 @@ li a {
 li a:hover {
     border-bottom-color: black;
 }
+
+/* Projects Page */
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.list {
+position: relative;
+height: auto;
+margin: 0 12%;
+background-color: transparent;
+display: flex;
+}
+
+.list-wrap {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.list-inner {
+    position: relative;
+    height: 100%;
+    width: 31%;
+    list-style: none;
+    display: inline-block;
+    border-style: solid;
+    border-width: 0;
+    border-color: transparent;
+    margin: 0 0 150px;
+    padding-bottom: 18%;
+    background-color: #666;
+}
