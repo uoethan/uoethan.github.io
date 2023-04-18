@@ -1,0 +1,19 @@
+/* style.css */
+canvas {
+    border-style: solid;
+    border-color: black;
+    border-width: thick;
+
+    margin: auto;
+    width: 50%;
+}
+
+html, body {
+    height: 100%;
+}
+
+main{
+    margin: auto;
+    width: fit-content;
+    padding: 10px;
+}
