@@ -8,10 +8,8 @@ $(function() {
 
         $.each(lines, function (n, elem) {
             const splitElem = elem.split("|");
-            list.append("<li class=\"list-inner\">"+splitElem[0]+"<br><img src='/Images/"+splitElem[0]+".png' class='list-image'><br>"+splitElem[1]+"</li>");
-
+            list.append("<a href='player.html?project="+splitElem[0]+"' class='project-link'><li class=\"list-inner\">"+splitElem[0]+"<br><img src='/Images/"+splitElem[0]+".png' class='list-image' alt='Project image'><br>"+splitElem[1]+"</li></a>");
         });
-        console.log(lines);
     });
     list.append("</ul>");
 });
