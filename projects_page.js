@@ -8,7 +8,7 @@ $(function() {
 
         $.each(lines, function (n, elem) {
             const splitElem = elem.split("|");
-            list.append("<a href='player.html?project="+splitElem[0]+"' class='project-link'><li class=\"list-inner\">"+splitElem[0]+"<br><img src='/Images/"+splitElem[0]+".png' class='list-image' alt='Project image'><br>"+splitElem[1]+"</li></a>");
+            list.append("<a href='player.html?project="+splitElem[0]+"' class='project-link'><li class=\"list-inner\">"+splitElem[2]+"<br><img src='/Images/"+splitElem[0]+".png' class='list-image' alt='Project image'><br>"+splitElem[1]+"</li></a>");
         });
     });
     list.append("</ul>");
