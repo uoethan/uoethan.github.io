@@ -1,4 +1,6 @@
 /* style.css */
+
+/* Main content */
 canvas {
     border-style: solid;
     border-color: black;
@@ -12,8 +14,45 @@ html, body {
     height: 100%;
 }
 
+html{
+    font-family: "Open Sans", serif;
+}
+
 main{
     margin: auto;
     width: fit-content;
     padding: 10px;
+}
+
+/*Nav Bar*/
+.logo{
+    float:left
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    border-bottom-color: black;
 }
