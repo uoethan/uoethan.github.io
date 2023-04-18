@@ -24,6 +24,11 @@ main{
     padding: 10px;
 }
 
+p a {
+    color: orangered;
+    text-decoration: underline;
+}
+
 /*Nav Bar*/
 .logo{
     float:left
