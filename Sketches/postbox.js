@@ -1,4 +1,7 @@
 function setup() {
+    objectIndex = 0
+    widths = [100,50]
+
     downForce = 0;
     letterPos = createVector(50,375);
     movingLetter = false;
@@ -16,7 +19,12 @@ function draw() {
     drawPostbox();
     drawBin();
 
-    drawLetter(letterPos.x,letterPos.y);
+    if(objectIndex==0){
+        drawLetter(letterPos.x,letterPos.y);
+    }else{
+        drawTin(letterPos.x,letterPos.y);
+    }
+
 
     if(movingLetter){
         letterPos.x+=movedX;
@@ -32,19 +40,29 @@ function draw() {
         }
     }
     resetLetter = false;
-    if(letterPos.x<375&&letterPos.x+100>375&&letterPos.y<160&&letterPos.y+75>160){
+    if(letterPos.x<375&&letterPos.x+widths[objectIndex]>375&&letterPos.y<160&&letterPos.y+75>160){
         resetLetter = true;
-        score++;
+        if(objectIndex==0){
+            score++;
+        }else{
+            score--;
+        }
+
     }
 
-    if(letterPos.x<125&&letterPos.x+100>125&&letterPos.y<250&&letterPos.y+75>250){
+    if(letterPos.x<125&&letterPos.x+widths[objectIndex]>125&&letterPos.y<250&&letterPos.y+75>250){
         resetLetter = true;
-        score--;
+        if(objectIndex==0){
+            score--;
+        }else{
+            score++;
+        }
     }
 
     if(resetLetter){
         movingLetter = false;
         letterPos = createVector(50,375);
+        objectIndex = round(random())
     }
 
     //score
@@ -97,8 +115,15 @@ function drawLetter(x,y){
     line(x+50,y+30,x+100,y);
 }
 
+function drawTin(x,y){
+    fill(200);
+    rect(x,y,50,75);
+    fill(0,100,255);
+    rect(x,y+5,50,65)
+}
+
 function mousePressed(){
-    if(!movingLetter&&mouseX>letterPos.x&&mouseX<letterPos.x+100&&mouseY>letterPos.y&&mouseY<letterPos.y+75){
+    if(!movingLetter&&mouseX>letterPos.x&&mouseX<letterPos.x+widths[objectIndex]&&mouseY>letterPos.y&&mouseY<letterPos.y+75){
         movingLetter = true;
     }
 }
