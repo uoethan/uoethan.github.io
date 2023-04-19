@@ -1,4 +1,4 @@
 game-of-life|Conway's classic Game of Life!|Conway's Game of Life|Conway's classic Game of Life!<br>Press <b>SPACE</b> to play and pause<br><b>Click</b> while paused to add or delete<br>Press <b>BACKSPACE</b> in edit mode to clear.
 sketch|It's just a cone!|Cone!|It's just a cone flying around, coning on all of us. TEMP.
-ellipsoid|A size-changing ellipsoid.|ELLIPSOID! YES!|It changes size. TEMP.
+ball|A ball that bounces.|Bouncing Ball|<b>WORK IN PROGRESS</b><br>This currently just bounces on the bottom of the canvas.<br>Future plans for this include being able to drag and drop the ball wherever and drawing surfaces for the ball to bounce on.
 box|It's a box.|Box... Huh!?|Boxin' TEMP.
