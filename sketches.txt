@@ -1,1 +1,4 @@
-game-of-life|Conway's classic Game of Life!|Conway's Game of Life|Conway's classic Game of Life!<br>Press SPACE to play and pause<br>Click while paused to add or delete<br>Press BACKSPACE in edit mode to clear.
+game-of-life|Conway's classic Game of Life!|Conway's Game of Life|Conway's classic Game of Life!<br>Press <b>SPACE</b> to play and pause<br><b>Click</b> while paused to add or delete<br>Press <b>BACKSPACE</b> in edit mode to clear.
+sketch|It's just a cone!|Cone!|It's just a cone flying around, coning on all of us. TEMP.
+ellipsoid|A size-changing ellipsoid.|ELLIPSOID! YES!|It changes size. TEMP.
+box|It's a box.|Box... Huh!?|Boxin' TEMP.

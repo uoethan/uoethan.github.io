@@ -63,48 +63,33 @@ li a:hover {
 }
 
 /* Projects Page */
+.list{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
 .column {
     float: left;
-    width: 33.33%;
-}
-
-.list {
-position: relative;
-height: auto;
-margin: 0 12%;
-background-color: transparent;
-display: flex;
-}
-
-.list-wrap {
-    width: 100%;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.list-inner {
-    position: relative;
-    height: 100%;
-    width: 31%;
-    list-style: none;
-    display: inline-block;
-    border-style: solid;
-    border-width: 0;
-    border-color: transparent;
-    margin: 0 0 150px;
-    padding-bottom: 18%;
-    padding-right: 5%;
-}
-
-.list-image{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 33.33%;
+    padding-bottom: 2.5%;
 
+    transition: all .2s ease-in-out;
+}
+
+.column:hover{
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.list-image{
     width: 200px;
     height: 200px;
 }
