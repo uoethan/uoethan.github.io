@@ -1,12 +1,13 @@
 function setup() {
-    let screen = "menu";
+    createCanvas(500, 500);
+
+    screen = "menu";
     highscore = getItem("highscore");
     if (highscore === null) {
         highscore = 0;
     }
 
     setupGame();
-    createCanvas(500, 500);
 }
 
 function draw() {
