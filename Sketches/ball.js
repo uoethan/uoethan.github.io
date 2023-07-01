@@ -60,6 +60,13 @@ class Ball{
     }
 }
 
+function genBalls(){
+    balls = []
+
+    for(var i = 0;i<10;i++)
+        balls.push(new Ball(200,200,10,random(-100,100),random(-100,100)));
+}
+
 function setup() {
     GRAVITY = 0.1;
     AIR_RESISTANCE = 0.01;
@@ -67,11 +74,8 @@ function setup() {
     FRICTION = 0.1;
 
     createCanvas(400, 400);
-    balls = []
 
-    for(var i = 0;i<10;i++)
-        balls.push(new Ball(200,200,10,random(-100,100),random(-100,100)));
-
+    genBalls();
 }
 
 function draw() {
@@ -92,6 +96,12 @@ function draw() {
 
 //     if(collided)
 //       ball.bounce();
-    ball.draw();
+        ball.draw();
+    }
+}
+
+function keyPressed(){
+    if(keyCode === ENTER){
+        genBalls();
     }
 }
