@@ -51,6 +51,7 @@ p a {
 
 /*Nav Bar*/
 .logo{
+    object-fit: contain;
     float:left
 }
 

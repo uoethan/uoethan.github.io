@@ -108,20 +108,17 @@ class Level {
 
         this.mapArray = [];
 
-        jQuery.get('level1.txt', function (data) {
+        for(var fileLine in level1File)
+        {
+            print(fileLine);
+            let mapLine = [];
+            for(var index = 0; index<fileLine.length; index++){
 
-            let lines = data.split("\n");
+                append(mapLine,fileLine.charAt(index));
+            }
 
-            $.each(lines, function (n, fileLine) {
-                let mapLine = [];
-                for(var index = 0; index<fileLine.length; index++){
-
-                    append(mapLine,fileLine.charAt(index));
-                }
-
-                append(this.mapArray,mapLine);
-            });
-        });
+            append(this.mapArray,mapLine);
+        };
 
         this.mapWidth = this.mapArray.length;
 
@@ -147,13 +144,18 @@ class Level {
         fill(200);
         for (var y = 0; y < 20; y++) {
             for (var x = 0; x < this.mapWidth; x++) {
-                if (this.mapArray[y][x] == 1) {
+                if (this.mapArray[y][x] == "1") {
                     square(x * this.squareSize, y * this.squareSize, this.squareSize);
                 }
             }
         }
     }
 }
+
+function preload() {
+    level1File = loadStrings('level1.txt');
+}
+
 
 function setup() {
     createCanvas(500, 500);
