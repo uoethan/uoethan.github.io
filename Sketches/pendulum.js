@@ -1,79 +1,73 @@
-var p;
+angle = 0;
+velocity = 0;
+mass = 2;
+gravity = 1;
+airResistance = 0.1;
+rodLength = 150;
 
-function setup()  {
-    createCanvas(640,360);
-    // Make a new Pendulum with an origin position and armlength
-    p = new Pendulum(createVector(width/2,0),175);
-    holding = false;
+hold = false;
 
+function setup() {
+    createCanvas(400, 400);
+}
+
+function constrainAngle() {
+    angle = (angle + PI) % TAU;
+    if (angle < 0) {
+        angle += TAU;
+    }
+    angle = angle - PI;
+
+    if (Math.abs(PI / 2 - angle) < 0.05 && Math.abs(velocity) < 0.5 * mass) {
+        angle = PI / 2;
+        velocity = 0;
+    }
+}
+
+function updatePhysics() {
+    constrainAngle();
+    velocity =
+        (velocity + (angle > -PI / 2 && angle < PI / 2 ? 1 : -1) * mass * gravity) *
+        (1 - airResistance);
+    if (angle == PI / 2) {
+        velocity = 0;
+    }
+    angle += velocity * (deltaTime / 1000);
+}
+
+function mouseInCircle() {
+    rSquared =
+        (mouseX - pendulumX) * (mouseX - pendulumX) +
+        (mouseY - pendulumY) * (mouseY - pendulumY);
+
+    return rSquared < 250;
+}
+
+function holdingCircle() {
+    if (mouseInCircle() && !hold) {
+        hold = true;
+    }
+
+    if (hold && !mouseIsPressed) {
+        hold = false;
+    }
+
+    return hold;
 }
 
 function draw() {
-    background(51);
-    if(!holding){
-        p.go();
-    }else{
-        p.angle = -createVector(320,0).angleBetween(createVector(mouseX,mouseY))-HALF_PI+PI-HALF_PI/2;
+    background(255);
+    pendulumX = 200 + Math.cos(angle) * rodLength;
+    pendulumY = 200 + Math.sin(angle) * rodLength;
+
+    if (holdingCircle()) {
+        angle = Math.atan2(mouseY - 200, mouseX - 200);
+    } else {
+        updatePhysics();
     }
-    p.display();
-}
+    fill(255);
+    circle(200, 200, 10);
+    line(200, 200, pendulumX, pendulumY);
 
-function mousePressed(){
-    if(ptInCircle(createVector(mouseX,mouseY),p.position,p.ballr)){
-        holding = true;
-    }
-}
-
-function mouseReleased(){
-    if(holding){
-        holding = false;
-    }
-}
-
-function Pendulum(origin_, r_) {
-    // Fill all variables
-    this.origin = origin_.copy();
-    this.position = createVector();
-    this.r = r_;
-    this.angle = PI/4;
-
-    this.aVelocity = 0.0;
-    this.aAcceleration = 0.0;
-    this.damping = 0.995;   // Arbitrary damping
-    this.ballr = 48.0;      // Arbitrary ball radius
-
-    this.go = function() {
-        this.update();
-    };
-
-    // Function to update position
-    this.update = function() {
-        var gravity = 0.4;                                               // Arbitrary constant
-        this.aAcceleration = (-1 * gravity / this.r) * sin(this.angle);  // Calculate acceleration (see: http://www.myphysicslab.com/pendulum1.html)
-        this.aVelocity += this.aAcceleration;                            // Increment velocity
-        this.aVelocity *= this.damping;                                  // Arbitrary damping
-        this.angle += this.aVelocity;                                    // Increment angle
-    };
-
-    this.display = function() {
-        this.position.set(this.r*sin(this.angle), this.r*cos(this.angle), 0);         // Polar to cartesian conversion
-        this.position.add(this.origin);                                               // Make sure the position is relative to the pendulum's origin
-
-        stroke(255);
-        strokeWeight(2);
-        // Draw the arm
-        line(this.origin.x, this.origin.y, this.position.x, this.position.y);
-        ellipseMode(CENTER);
-        fill(127);
-        // Draw the ball
-        ellipse(this.position.x, this.position.y, this.ballr, this.ballr);
-    };
-}
-
-function ptInCircle(pt, center, r) {
-
-    const lhs = Math.pow(center.x - pt.x, 2) + Math.pow(center.y - pt.y, 2);
-    const rhs = Math.pow(r, 2);
-
-    return lhs < rhs;
+    circle(pendulumX, pendulumY, 50);
 }
