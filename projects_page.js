@@ -7,7 +7,7 @@ $(function() {
         let lines = data.split("\n");
 
         $.each(lines, function (n, elem) {
-            if(n%3===0){
+            if(n%4===0){
                 list.append("</div>\n<p><br></p>\n<div class='row'>")
             }
             const splitElem = elem.split("|");
